@@ -1,38 +1,16 @@
 <template>
     <div class="feed">
         <mu-timeline>
-            <mu-timeline-item>
-                <span slot="time">2017年 6月 1日</span>
-                <span slot="des">发起第一个pr</span>
-            </mu-timeline-item>
-            <mu-timeline-item>
-                <span slot="time">2017年 6月 6日</span>
-                <span slot="des">发起第一个issue</span>
-            </mu-timeline-item>
-            <mu-timeline-item>
-                <span slot="time">2017年 6月 12日</span>
-                <span slot="des">添加backTop组件</span>
-            </mu-timeline-item>
-            <mu-timeline-item>
-                <span slot="time">2017年 6月 16日</span>
-                <span slot="des">加入Muse-UI org<br/>添加breadcrumb组件</span>
-            </mu-timeline-item>
-            <mu-timeline-item>
-                <span slot="time">2017年 6月 19日</span>
-                <span slot="des">添加FAQ模块</span>
-            </mu-timeline-item>
-            <mu-timeline-item>
-                <span slot="time">2017年 6月 20日</span>
-                <span slot="des">添加Layout</span>
-            </mu-timeline-item>
-            <mu-timeline-item>
-                <span>更多</span>
+            <mu-timeline-item v-for="(feed, key) in feed_data">
+                <span slot="time">{{feed.CreateTime}}</span>
+                <span slot="des">{{feed.FeedData}}</span>
             </mu-timeline-item>
         </mu-timeline>
     </div>
 </template>
 <script>
     import * as API from 'constants/API'
+    import * as Util from 'assets/Util'
     import Vue from 'assets/EventBus'
     export default {
         name: 'feed',
@@ -45,7 +23,7 @@
             redirect: id => {
                 this.$router.push({path: id})
             },
-            getFeedList: () => {
+            getFeedList: (self) => {
                 Vue.$http.get(API.API_FEED, this.$data, {
                     emulateJSON: true
                 })
@@ -54,6 +32,14 @@
                         console.log(ret)
                         if (ret['error_no'] != 0) {
                             console.log(ret)
+                            return
+                        }
+                        if (ret.length == 0) {
+                            return
+                        }
+                        for (let i in ret.result) {
+                            ret.result[i].CreateTime = Util.TimestampToTime(ret.result[i]['CreateTime'])
+                            self.feed_data.push(ret.result[i])
                         }
                     })
                     .catch(function (response) {
@@ -62,7 +48,7 @@
             }
         },
         mounted(){
-            this.getFeedList()
+            this.getFeedList(this)
         }
     }
 </script>
