@@ -2,7 +2,7 @@
     <div class="feed">
         <mu-timeline>
             <mu-timeline-item v-for="(feed, key) in feed_data">
-                <span slot="time">{{feed.CreateTime}}</span>
+                <span slot="time">{{feed.Ext.user_info.user_name}} {{feed.CreateTime}}</span>
                 <span slot="des">{{feed.FeedData}}</span>
             </mu-timeline-item>
         </mu-timeline>

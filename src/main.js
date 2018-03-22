@@ -24,6 +24,6 @@ new Vue({
 })
 
 Vue.http.interceptors.push((request, next) => {
-  request.credentials = true
+  // request.credentials = true
   next()
 })

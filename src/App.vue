@@ -1,16 +1,20 @@
 <template>
     <div id="app">
+        <top v-if="show_top == true"></top>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+import Top from 'pages/common/TemplateAppBar'
 import Bus from 'assets/EventBus'
 
 export default {
     name: 'app',
     data () {
-        return {}
+        return {
+            show_top: true,
+        }
     },
     mounted (){
 //        Bus.$on('test', function (msg) {
@@ -19,11 +23,11 @@ export default {
 //        });
     },
     components: {
+        Top,
     }
 }
 </script>
-
-<style>
+<style scoped lang="less">
     @font-face {
         font-family: 'Material Icons';
         font-style: normal;
