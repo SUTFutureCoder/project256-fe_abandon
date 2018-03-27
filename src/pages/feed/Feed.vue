@@ -20,8 +20,9 @@
             }
         },
         methods: {
-            redirect: id => {
-                this.$router.push({path: id})
+            redirect: feed => {
+                // 通过点击动态，跳转到实际的心愿或文章中
+                this.$router.push({path: feed})
             },
             getFeedList: (self) => {
                 Vue.$http.get(API.API_FEED, this.$data, {
@@ -29,7 +30,6 @@
                 })
                     .then((response) => {
                         let ret = response.body
-                        console.log(ret)
                         if (ret['error_no'] != 0) {
                             console.log(ret)
                             return

@@ -1,7 +1,9 @@
 <template>
     <div id="app">
         <top v-if="show_top == true"></top>
-        <router-view></router-view>
+        <div id="content">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -49,5 +51,10 @@ export default {
         direction: ltr;
         -webkit-font-feature-settings: 'liga';
         -webkit-font-smoothing: antialiased;
+    }
+
+    #content {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 </style>

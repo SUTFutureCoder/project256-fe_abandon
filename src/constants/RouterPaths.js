@@ -15,4 +15,4 @@ export const PAGES_WISH_MAKE    = '/wish/make'
 export const PAGES_WISH_LIST    = '/wish/list'
 
 // 详情
-export const PAGE_INFO  = '/info'
+export const PAGES_INFO  = '/info'

@@ -16,7 +16,7 @@
                 index: RouterPath.PAGES_INDEX,
                 essay: RouterPath.PAGES_ESSAY_LIST,
                 wish:  RouterPath.PAGES_WISH_LIST,
-                info:  RouterPath.PAGE_INFO,
+                info:  RouterPath.PAGES_INFO,
             }
         },
         methods: {
@@ -35,7 +35,7 @@
         margin-bottom: 20px;
         .appbar-title-title{
             float: left;
-            /*margin-left: 20px;*/
+            margin-right: 20px;
             a {
                 color: #FFF;
                 font-size: x-large;

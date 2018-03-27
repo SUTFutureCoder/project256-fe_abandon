@@ -1,11 +1,6 @@
 <template>
-    <div class="feed">
-        <mu-timeline>
-            <mu-timeline-item v-for="(feed, key) in feed_data">
-                <span slot="time">{{feed.Ext.user_info.user_name}} {{feed.CreateTime}}</span>
-                <span slot="des">{{feed.FeedData}}</span>
-            </mu-timeline-item>
-        </mu-timeline>
+    <div class="essay_list">
+
     </div>
 </template>
 <script>
@@ -13,18 +8,17 @@
     import * as Util from 'assets/Util'
     import Vue from 'assets/EventBus'
     export default {
-        name: 'feed',
+        name: 'essay_list',
         data() {
             return {
-                feed_data: [],
+                curpage: 1,
+                perpage: 20,
+                list: [],
             }
         },
         methods: {
-            redirect: id => {
-                this.$router.push({path: id})
-            },
-            getFeedList: (self) => {
-                Vue.$http.get(API.API_FEED, this.$data, {
+            getEssayList: (self) => {
+                Vue.$http.get(API.API_ESSAY_LIST + '/1', this.$data, {
                     emulateJSON: true
                 })
                     .then((response) => {
@@ -48,7 +42,7 @@
             }
         },
         mounted(){
-            this.getFeedList(this)
+            this.getEssayList(this)
         }
     }
 </script>
