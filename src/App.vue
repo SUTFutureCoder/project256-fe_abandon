@@ -1,21 +1,22 @@
 <template>
     <div id="app">
-        <top v-if="show_top == true"></top>
+        <top></top>
         <div id="content">
             <router-view></router-view>
         </div>
+        <bottom></bottom>
     </div>
 </template>
 
 <script>
 import Top from 'pages/common/TemplateAppBar'
+import Bottom from 'pages/common/TemplateAppBottom'
 import Bus from 'assets/EventBus'
 
 export default {
     name: 'app',
     data () {
         return {
-            show_top: true,
         }
     },
     mounted (){
@@ -26,6 +27,7 @@ export default {
     },
     components: {
         Top,
+        Bottom,
     }
 }
 </script>

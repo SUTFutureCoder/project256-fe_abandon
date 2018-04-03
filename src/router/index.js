@@ -19,7 +19,7 @@ export default new Router({
         },
         // 文章
         {
-            path: RouterPath.PAGES_ESSAY_INFO,
+            path: RouterPath.PAGES_ESSAY_INFO + '/:essay_id',
             component: EssayInfo
         },
         {
