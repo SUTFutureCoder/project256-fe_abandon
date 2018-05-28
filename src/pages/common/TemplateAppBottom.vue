@@ -1,6 +1,6 @@
 <template>
     <div id="page-bottom">
-        <a href="https://github.com/SUTFutureCoder/project256" target="_blank">Project256</a><a> ©️{{currentTime}} Created By </a><a href="https://github.com/SUTFutureCoder">FutureCoder</a>
+        <a href="https://github.com/SUTFutureCoder/project256" target="_blank">Project256</a><a> ©2018.05.29️{{currentTime}} Created By </a><a href="https://github.com/SUTFutureCoder">FutureCoder</a>
     </div>
 </template>
 <script>
@@ -14,7 +14,13 @@
         methods: {
         },
         mounted() {
+            // 版权信息
             this.currentTime = new Date().getFullYear()
+            if (this.currentTime == 2018) {
+                this.currentTime = ''
+            } else {
+                this.currentTime = ' ~ ' + this.currentTime
+            }
         }
     }
 </script>

@@ -2,6 +2,8 @@
  * 接口字典
  */
 export const HTTP_BASE = 'http://127.0.0.1:3000/'
+// export const HTTP_BASE = 'https://project256.com/api/'
+
 // 主页
 export const API_INDEX              = HTTP_BASE + 'index'                   //主页
 

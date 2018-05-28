@@ -2,17 +2,14 @@
     <div class="essay_list">
         <mu-list>
             <template v-for="item in list">
-                <mu-card>
-                    <mu-card-title class="essay_list_title" :title="item.EssayTitle" :subTitle="item.CreateUser + ' ' + item.CreateTime" @click.native="clickEssayTitle(item.EssayId)"/>
+                <mu-card @click.native="clickEssayTitle(item.EssayId)">
+                    <mu-card-title class="essay_list_title" :title="item.EssayTitle" :subTitle="item.Ext.user_info.user_name + ' ' + item.CreateTime" />
                     <mu-card-text>
                         {{item.EssayContent}}
                     </mu-card-text>
-                    <mu-divider />
                     <mu-card-actions>
-                        <div v-for="wish in item.Ext">
-                            <div v-if="wish">
-                                <mu-badge :content="wish.WishContent" slot="after" primary/>
-                            </div>
+                        <div v-if="item.Ext.wish_info">
+                            <mu-badge :content="item.Ext.wish_info.WishContent" slot="after" color="primary"/>
                         </div>
                     </mu-card-actions>
                 </mu-card>

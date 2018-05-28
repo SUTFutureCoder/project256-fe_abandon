@@ -1,9 +1,8 @@
 <template>
     <div class="essay_info">
         <div id="essay_info_title"><h1>{{essay_info.EssayTitle}}</h1></div>
-        <div id="essay_info_sub_title"><h2>{{essay_info.Ext.user_info.user_name}}</h2></div>
-        <div id="essay_info_time"><h3>{{essay_info.CreateTime}}</h3></div>
-        <div id="essay_info_wish" v-if="essay_info.Ext.wish_info.WishContent != ''"><mu-badge :content="essay_info.Ext.wish_info.WishContent" slot="after" primary/></div>
+        <div id="essay_info_sub_title"><h3>{{essay_info.Ext.user_info.user_name}} {{essay_info.CreateTime}}</h3></div>
+        <div id="essay_info_wish"><mu-badge :content="essay_info.Ext.wish_info.WishContent" slot="after" color="primary"/></div>
         <mu-divider/>
         <div id="essay_info_content">
             <div v-if="essay_info.ContentType == Const.CONTENT_TYPE_HTML">
@@ -28,8 +27,12 @@
         name: 'essay_info',
         data() {
             return {
-                essay_info: [],
-
+                essay_info: {
+                    Ext: {
+                        user_info: {},
+                        wish_info: {},
+                    },
+                },
                 Const: Const,
             }
         },
@@ -47,7 +50,6 @@
                         if (ret.length == 0) {
                             return
                         }
-
                         ret.result.CreateTime = Util.TimestampToTime(ret.result.CreateTime)
                         self.essay_info = ret.result
                     })
@@ -56,7 +58,7 @@
                     })
             },
         },
-        mounted(){
+        created: function(){
             this.getEssayInfo(this)
         },
         components: {

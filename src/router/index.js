@@ -7,6 +7,8 @@ import EssayInfo from 'pages/essay/Info'
 import EssayList from 'pages/essay/List'
 import EssayWrite from 'pages/essay/Write'
 
+import WishList from 'pages/wish/List'
+
 import Info from 'pages/info/Info'
 
 Vue.use(Router)
@@ -31,7 +33,10 @@ export default new Router({
             component: EssayList
         },
         // 心愿
-
+        {
+            path: RouterPath.PAGES_WISH_LIST,
+            component: WishList,
+        },
         // 关于
         {
             path: RouterPath.PAGES_INFO,

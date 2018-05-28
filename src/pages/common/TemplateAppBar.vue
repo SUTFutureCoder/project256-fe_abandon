@@ -1,9 +1,9 @@
 <template>
-    <mu-appbar>
+    <mu-appbar color="primary">
         <div class="appbar-title-title" slot="left"><a @click="redirect(index)">Project 256</a></div>
-        <mu-flat-button color="white" label="文章" slot="left" @click="redirect(essay)"/>
-        <mu-flat-button color="white" label="心愿" slot="left" @click="redirect(wish)"/>
-        <mu-flat-button color="white" label="关于" slot="left" @click="redirect(info)"/>
+        <mu-button flat slot="left" @click="redirect(essay)">文章</mu-button>
+        <mu-button flat slot="left" @click="redirect(wish)">心愿</mu-button>
+        <mu-button flat slot="left" @click="redirect(info)">关于</mu-button>
         <!--<mu-flat-button color="white" v-if="loged" :label="msg" @click="redirect(routerLogin)"/>-->
     </mu-appbar>
 </template>
@@ -32,6 +32,7 @@
         position: relative;
         overflow: hidden;
         top: 0;
+        width: 100%;
         margin-bottom: 20px;
         .appbar-title-title{
             float: left;
