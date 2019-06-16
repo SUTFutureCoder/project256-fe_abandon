@@ -4,6 +4,7 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 import MuseUI from 'muse-ui'
 import theme from 'muse-ui/lib/theme';
+import 'muse-ui/dist/muse-ui.css'
 import Vuex from 'vuex'
 
 import App from './App'
